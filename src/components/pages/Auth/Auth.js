@@ -1,19 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import authRequests from '../../helpers/data/authRequests';
+// import PropTypes from 'prop-types';
+import authRequests from '../../../helpers/data/authRequests';
 import google from './images/google.png';
 import './Auth.scss';
 
 class Auth extends React.Component {
-  static propTypes = {
-    isAuthenticated: PropTypes.func,
-  }
+  // static propTypes = {
+  //   isAuthenticated: PropTypes.func,
+  // }
 
   authenticateUser = (e) => {
     e.preventDefault(); // telling it to do only specific thing not the default of click event
     authRequests.authenticate().then((res) => {
-      const user = res.additionalUserInfo.username;
-      this.props.isAuthenticated(user);
+      // const user = res.additionalUserInfo.username;
+      // this.props.isAuthenticated(user);
+      this.props.history.push('/home');
     }).catch(err => console.error('there was an error with auth', err));
   }
 
