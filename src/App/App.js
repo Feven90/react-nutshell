@@ -14,7 +14,9 @@ import Friends from '../components/pages/Friends/Friends';
 import Articles from '../components/pages/Articles/Articles';
 import Weather from '../components/pages/Weather/Weather';
 import Messages from '../components/pages/Messages/Messages';
+import weatherData from '../helpers/data/weatherRequests';
 import Events from '../components/pages/Events/Events';
+
 import './App.scss';
 // import { Button } from 'reactstrap';
 
@@ -69,6 +71,7 @@ class App extends React.Component {
   state = {
     authed: false,
     pendingUser: true,
+    weather: [],
   }
 
   componentDidMount() {
@@ -92,9 +95,31 @@ class App extends React.Component {
     this.removeListener();
   }
 
-  // isAuthenticated = () => {
+  weatherfunc = () => {
+    authRequests.getCurrentUid().then((uid) => {
+      weatherData.getWeather(uid)
+        .then((weather) => {
+          console.log(weather);
+          this.setState({ weather });
+        });
+    })
+      .catch(err => console.error('error with locations GET', err));
+  };
+
+  // user = () => {
   //   this.setState({ authed: true });
   // }
+
+  // weatherLocations = () => {
+  //   const getUid = authRequests.getCurrentUid();
+  //   weatherData.getWeather(getUid)
+  //     .then((weather) => {
+  //       console.log(weather);
+  //       this.setState({ weather });
+  //     })
+  //     .catch(err => console.error('error with locations GET', err));
+  // }
+
 
   render() {
     const { authed, pendingUser } = this.state;
@@ -102,6 +127,16 @@ class App extends React.Component {
       authRequests.logoutUser();
       this.setState({ authed: false });
     };
+
+    // const { uid } = this.state;
+    // if (uid === authRequests.getCurrentUid) {
+    // weatherData.getWeather()
+    //   .then((weather) => {
+    //     console.log(weather);
+    //     this.setState({ weather });
+    //   })
+    //   .catch(err => console.error('error with locations GET', err));
+    // }
 
     if (pendingUser) {
       return null;
@@ -119,7 +154,7 @@ class App extends React.Component {
                 <PrivateRoute path='/home' component={Home} authed={this.state.authed} />
                 <PrivateRoute2 path='/friends' component={Friends} authed={this.state.authed} />
                 <PrivateRouteArticles path='/articles' component={Articles} authed={this.state.authed} />
-                <PrivateRouteWeather path='/weather' component={Weather} authed={this.state.authed} />
+                <PrivateRouteWeather path='/weather' component={() => <Weather weather={this.state.weather} />} authed={this.state.authed} />
                 <PrivateRouteEvents path='/events' component={Events} authed={this.state.authed} />
                 <PrivateRouteMessages path='/messages' component={Messages} authed={this.state.authed} />
                 <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />

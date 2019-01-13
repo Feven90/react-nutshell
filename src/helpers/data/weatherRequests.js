@@ -15,6 +15,7 @@ const getWeather = uid => new Promise((resolve, reject) => {
           weatherArray.push(weatherObject[weatherId]);
         });
       }
+      console.log(weatherArray);
       resolve(weatherArray);
     })
     .catch((error) => {
