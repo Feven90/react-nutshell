@@ -44,7 +44,7 @@ class WeatherForcastComponent extends React.Component {
     const { newListing } = this.state;
     return (
   <div className="listing-form col">
-  <h2>Add New Listing:</h2>
+  <h2>Add New Location:</h2>
     <form onSubmit={this.formSubmit}>
       <div className="form-group">
         <label htmlFor="address">City</label>
