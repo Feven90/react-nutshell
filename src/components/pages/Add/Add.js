@@ -7,7 +7,6 @@ import authRequests from '../../../helpers/data/authRequests';
 const defaultListing = {
   city: '',
   state: '',
-  weather: [],
 };
 
 class WeatherForcastComponent extends React.Component {
