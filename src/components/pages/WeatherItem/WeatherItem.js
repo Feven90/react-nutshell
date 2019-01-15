@@ -10,7 +10,7 @@ class WeatherItem extends React.Component {
           <div className="card-body text-center">
             <h4 className="card-title"><i className="fas fa-bolt fa-2x"></i></h4>
             <ul>{weatherLocation.city} </ul>
-            <p className="card-text">city</p>
+            <ul>{weatherLocation.state} </ul>
           </div>
         </div>
       </div>
