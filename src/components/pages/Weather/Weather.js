@@ -4,6 +4,7 @@ import 'firebase/auth';
 import WeatherItem from '../WeatherItem/WeatherItem';
 import authRequests from '../../../helpers/data/authRequests';
 import weatherRequests from '../../../helpers/data/weatherRequests';
+import WeatherForcastComponent from '../CurrentWeather/CurrentWeather';
 
 class Weather extends React.Component {
   state = {
@@ -30,9 +31,10 @@ class Weather extends React.Component {
 
     return (
       <div className='Home'>
-      <div className="card-deck">
+      <div className="card-deck col">
             <ul>{weatherLocationz} </ul>
-            <p className="card-text">Weather</p>
+            <WeatherForcastComponent
+            />
       </div>
     </div>
     );

@@ -4,12 +4,12 @@
     "uid": "RrttvZJP4ENSPgInxFYP4A1h2JY2",
     "city": "San Francisco",
     "state": "CA",
-    "isCurrent": true
+    "isCurrent": false
   },
   "weather2": {
     "uid": "RrttvZJP4ENSPgInxFYP4A1h2JY2",
     "city": "Nashville",
     "state": "TN",
-    "isCurrent": false
+    "isCurrent": true
   }
 }
