@@ -14,7 +14,6 @@ const getWeather = uid => new Promise((resolve, reject) => {
           weatherObject[weatherId].id = weatherId;
           weatherArray.push(weatherObject[weatherId]);
         });
-        console.log(weatherArray);
       }
       resolve(weatherArray);
     })
