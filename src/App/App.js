@@ -33,37 +33,6 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
-const PrivateRoute2 = ({ component: Component, authed, ...rest }) => {
-  const routeChecker = props => (authed === true
-    ? (<Component { ...props } />)
-    : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
-  return <Route {...rest} render={props => routeChecker(props)} />;
-};
-const PrivateRouteArticles = ({ component: Component, authed, ...rest }) => {
-  const routeChecker = props => (authed === true
-    ? (<Component { ...props } />)
-    : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
-  return <Route {...rest} render={props => routeChecker(props)} />;
-};
-const PrivateRouteWeather = ({ component: Component, authed, ...rest }) => {
-  const routeChecker = props => (authed === true
-    ? (<Component { ...props } />)
-    : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
-  return <Route {...rest} render={props => routeChecker(props)} />;
-};
-const PrivateRouteEvents = ({ component: Component, authed, ...rest }) => {
-  const routeChecker = props => (authed === true
-    ? (<Component { ...props } />)
-    : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
-  return <Route {...rest} render={props => routeChecker(props)} />;
-};
-const PrivateRouteMessages = ({ component: Component, authed, ...rest }) => {
-  const routeChecker = props => (authed === true
-    ? (<Component { ...props } />)
-    : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
-  return <Route {...rest} render={props => routeChecker(props)} />;
-};
-
 class App extends React.Component {
   state = {
     authed: false,
@@ -112,11 +81,11 @@ class App extends React.Component {
               <Switch>
                 <PrivateRoute path='/' exact component={Home} authed={this.state.authed} />
                 <PrivateRoute path='/home' component={Home} authed={this.state.authed} />
-                <PrivateRoute2 path='/friends' component={Friends} authed={this.state.authed} />
-                <PrivateRouteArticles path='/articles' component={Articles} authed={this.state.authed} />
-                <PrivateRouteWeather path='/weather' component={Weather} authed={this.state.authed} />
-                <PrivateRouteEvents path='/events' component={Events} authed={this.state.authed} />
-                <PrivateRouteMessages path='/messages' component={Messages} authed={this.state.authed} />
+                <PrivateRoute path='/friends' component={Friends} authed={this.state.authed} />
+                <PrivateRoute path='/articles' component={Articles} authed={this.state.authed} />
+                <PrivateRoute path='/weather' component={Weather} authed={this.state.authed} />
+                <PrivateRoute path='/events' component={Events} authed={this.state.authed} />
+                <PrivateRoute path='/messages' component={Messages} authed={this.state.authed} />
                 <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
               </Switch>
               </div>
