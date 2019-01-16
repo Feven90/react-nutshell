@@ -7,6 +7,7 @@ import authRequests from '../../../helpers/data/authRequests';
 const defaultListing = {
   city: '',
   state: '',
+  isCurrent: false,
 };
 
 class WeatherForcastComponent extends React.Component {
@@ -43,7 +44,7 @@ class WeatherForcastComponent extends React.Component {
     const { newListing } = this.state;
     return (
   <div className="listing-form col">
-  <h2>Add New Location:</h2>
+    <h2>Add New Location:</h2>
     <form onSubmit={this.formSubmit}>
       <div className="form-group">
         <label htmlFor="address">City</label>
