@@ -11,5 +11,11 @@
     "city": "Nashville",
     "state": "TN",
     "isCurrent": true
+  },
+  "weather3": {
+    "uid": "RrttvZJP4ENSPgInxFYP4A1h2JY2",
+    "city": "New York",
+    "state": "NY",
+    "isCurrent": true
   }
 }

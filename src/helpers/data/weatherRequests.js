@@ -15,6 +15,7 @@ const getWeather = uid => new Promise((resolve, reject) => {
           weatherArray.push(weatherObject[weatherId]);
         });
       }
+      console.log(weatherArray[0].id);
       resolve(weatherArray);
     })
     .catch((error) => {
@@ -36,7 +37,7 @@ const getIsCurrent = uid => new Promise((resolve, reject) => {
         });
       }
       const isCurrent = weatherArray.find(x => x.isCurrent);
-      console.log(isCurrent);
+      console.log(weatherArray[0]);
       resolve(isCurrent);
     })
     .catch((error) => {

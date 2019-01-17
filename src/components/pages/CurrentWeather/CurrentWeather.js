@@ -12,9 +12,8 @@ class WeatherForcastComponent extends React.Component {
   componentDidMount() {
     const uid = authRequests.getCurrentUid();
     weatherRequests.getIsCurrent(uid)
-      .then((isCurrent) => {
-        this.setState({ isCurrent });
-        const getCurrentLocation = isCurrent;
+      .then((current) => {
+        const getCurrentLocation = current;
         const getCity = getCurrentLocation.city;
         const getState = getCurrentLocation.state;
         weatherForcast.getForecast(getCity, getState)
@@ -24,14 +23,17 @@ class WeatherForcastComponent extends React.Component {
       });
   }
 
+
   render() {
     const { currentWeatherLocation } = this.state;
     return (
-      <div className='Home'>
-        <p className="card-text">Current Weather</p>
-        <ul>{currentWeatherLocation.app_temp} </ul>
+      <div className="card">
+      <div className="card-body">
+      <div className="card-header" id="weather-card-header">Current Weather</div>
         <ul>{currentWeatherLocation.city_name} </ul>
         <ul>{currentWeatherLocation.state_code} </ul>
+        <ul>{currentWeatherLocation.app_temp} </ul>
+        </div>
     </div>
     );
   }

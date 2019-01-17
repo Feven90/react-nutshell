@@ -10,15 +10,20 @@ import Add from '../Add/Add';
 class Weather extends React.Component {
   state = {
     weather: [],
+    isCurrent: '',
   };
 
-  componentDidMount() {
+  WeatherGetter() {
     const uid = authRequests.getCurrentUid();
     weatherRequests.getWeather(uid)
       .then((weather) => {
         this.setState({ weather });
       })
       .catch(err => console.error('error with locations GET', err));
+  }
+
+  componentDidMount() {
+    this.WeatherGetter();
   }
 
   formSubmitEvent = (addedLocation) => {
@@ -33,21 +38,29 @@ class Weather extends React.Component {
       .catch(err => console.error('error with listings post', err));
   }
 
+  deleteLocation = (locationId) => {
+    weatherRequests.deleteWeather(locationId)
+      .then(() => {
+        this.WeatherGetter();
+      });
+  };
+
   render() {
     const { weather } = this.state;
     const weatherLocationz = weather.map(weatherLocation => (
       <WeatherItem
       weatherLocation={weatherLocation}
       key={weatherLocation.id}
+      deleteSingleLocation={this.deleteLocation}
       />
     ));
 
     return (
-      <div className='Home'>
-      <div className="card-deck col">
-            <ul>{weatherLocationz} </ul>
-            <ul><WeatherForcastComponent
+      <div className='container'>
+      <div className="card-deck col weather-wrap">
+      <ul><WeatherForcastComponent
             /></ul>
+            <ul>{weatherLocationz} </ul>
             <Add onSubmit={this.formSubmitEvent}/>
       </div>
     </div>

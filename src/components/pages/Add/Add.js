@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Add.scss';
 
 import 'firebase/auth';
 import authRequests from '../../../helpers/data/authRequests';
@@ -7,6 +8,7 @@ import authRequests from '../../../helpers/data/authRequests';
 const defaultListing = {
   city: '',
   state: '',
+  isCurrent: false,
 };
 
 class WeatherForcastComponent extends React.Component {
@@ -42,8 +44,8 @@ class WeatherForcastComponent extends React.Component {
   render() {
     const { newListing } = this.state;
     return (
-  <div className="listing-form col">
-  <h2>Add New Location:</h2>
+  <div className="location-form">
+    <h2>Add New Location:</h2>
     <form onSubmit={this.formSubmit}>
       <div className="form-group">
         <label htmlFor="address">City</label>
