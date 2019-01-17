@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Add.scss';
 
 import 'firebase/auth';
 import authRequests from '../../../helpers/data/authRequests';
@@ -43,7 +44,7 @@ class WeatherForcastComponent extends React.Component {
   render() {
     const { newListing } = this.state;
     return (
-  <div className="listing-form col">
+  <div className="location-form">
     <h2>Add New Location:</h2>
     <form onSubmit={this.formSubmit}>
       <div className="form-group">
